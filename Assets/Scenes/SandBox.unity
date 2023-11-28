@@ -146,6 +146,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 100
+--- !u!95 &440449073
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440449065}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d0c7cbf2309d24745a9d010d26aefa50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &628975511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
@@ -1338,6 +1359,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2124204518402456156, guid: 849c303c3cbc94f25912dbdd9f63c498, type: 3}
       insertIndex: -1
       addedObject: {fileID: 440449072}
+    - targetCorrespondingSourceObject: {fileID: 2124204518402456156, guid: 849c303c3cbc94f25912dbdd9f63c498, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 440449073}
   m_SourcePrefab: {fileID: 100100000, guid: 849c303c3cbc94f25912dbdd9f63c498, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
