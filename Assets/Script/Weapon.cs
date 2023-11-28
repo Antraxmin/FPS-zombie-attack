@@ -25,6 +25,7 @@ public class Weapon : MonoBehaviour
 
             // 적의 수명 감소
             EnermyHealth target = hit.transform.GetComponent<EnermyHealth>();
+            if (target == null) return;     // 적이 아닌 다른 물체를 타격했을 경우의 예외 처리
             target.TakeDamage(damage);      // 무기 사용 시 30만큼의 damage
         }
 
