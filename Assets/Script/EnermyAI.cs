@@ -9,7 +9,8 @@ public class EnermyAI : MonoBehaviour
     [SerializeField] float chaseRange = 5f;     // 추적 범위 설정 
 
     NavMeshAgent navMeshAgent;       //  네비메쉬 에이전트 호출
-    float distanceToTarget = Mathf.Infinity;    
+    float distanceToTarget = Mathf.Infinity;
+    bool isProvoked = false;
 
     void Start()
     {
@@ -20,11 +21,38 @@ public class EnermyAI : MonoBehaviour
     void Update()
     {
         distanceToTarget = Vector3.Distance(target.position, transform.position);
-        // 타겟과의 거리 - 추적 범위 값 비교 
-        if (distanceToTarget <= chaseRange)
+
+        if (isProvoked)
         {
-            navMeshAgent.SetDestination(target.position);
+            EngageTarget();
         }
+        else if (distanceToTarget <= chaseRange)    
+        {
+            isProvoked = true;           
+        }
+    }
+
+    private void EngageTarget()
+    {
+        if (distanceToTarget >= navMeshAgent.stoppingDistance)
+        {
+            ChaseTarget();
+        }
+
+        if (distanceToTarget <= navMeshAgent.stoppingDistance)
+        {
+            AttackTarget();
+        }
+    }
+
+    private void ChaseTarget()
+    {
+        navMeshAgent.SetDestination(target.position);
+    }
+
+    private void AttackTarget()
+    {
+        Debug.Log(name + "has seeked and is destroying" + target.name);
     }
 
     void OnDrawGizmosSelected()
