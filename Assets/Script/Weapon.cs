@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] Camera FPCamera;
     [SerializeField] float range = 100f;
     [SerializeField] float damage = 30f;
+    [SerializeField] ParticleSystem muzzleFlash;
+
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -17,7 +20,14 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
+        PlayMuzzleFlash();
         ProcessRaycast();
+    }
+
+    // 사용자 지정 파티클 시스템 적용 
+    private void PlayMuzzleFlash()
+    {
+        muzzleFlash.Play();
     }
 
     private void ProcessRaycast()
