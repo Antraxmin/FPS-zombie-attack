@@ -1101,6 +1101,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1896010845}
+    - target: {fileID: 2755282952744344054, guid: 849c303c3cbc94f25912dbdd9f63c498, type: 3}
+      propertyPath: chaseRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090252233205764487, guid: 849c303c3cbc94f25912dbdd9f63c498, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
