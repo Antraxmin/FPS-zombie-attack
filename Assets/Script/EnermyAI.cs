@@ -26,4 +26,10 @@ public class EnermyAI : MonoBehaviour
             navMeshAgent.SetDestination(target.position);
         }
     }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;       // 기즈모 색상 설정
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
+    }
 }
