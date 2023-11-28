@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class EnermyHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] float hitPoints = 100f;    // 남은 수명
 
-    // Update is called once per frame
-    void Update()
+    // damage 수치만큼 hitPoints 감소
+    public void TakeDamage(float damage)
     {
-        
+        hitPoints -= damage;
+        // hitPoints가 0이 되면 사망
+        if (hitPoints <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
