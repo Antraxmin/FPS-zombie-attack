@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] Camera FPCamera;
     [SerializeField] float range = 100f;
+    [SerializeField] float damage = 30f;
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -24,6 +25,7 @@ public class Weapon : MonoBehaviour
 
             // 적의 수명 감소
             EnermyHealth target = hit.transform.GetComponent<EnermyHealth>();
+            target.TakeDamage(damage);      // 무기 사용 시 30만큼의 damage
         }
 
         // Null Reference Exception 오류 방지
