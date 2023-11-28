@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 8616685848737228376}
   - component: {fileID: 3722835519057446588}
   m_Layer: 8
-  m_Name: PlayerCapsule
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
