@@ -17,7 +17,20 @@ public class Weapon : MonoBehaviour
     private void Shoot()
     {
         RaycastHit hit;
-        Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range);
-        Debug.Log(hit.transform.name + "공격");
+        if (Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range))
+        {
+            // 특정 물체 명중 시 시각적 피드백 
+            Debug.Log(hit.transform.name + "공");
+
+            // 적의 수명 감소
+            EnermyHealth target = hit.transform.GetComponent<EnermyHealth>();
+        }
+
+        // Null Reference Exception 오류 방지
+        else
+        {
+            return;
+        }
+        
     }
 }
