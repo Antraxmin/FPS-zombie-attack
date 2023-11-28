@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448e60e14889847aa8876688c22742a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1896010845}
   damage: 40
 --- !u!4 &628975511 stripped
 Transform:
