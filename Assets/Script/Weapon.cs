@@ -17,6 +17,11 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
+        ProcessRaycast();
+    }
+
+    private void ProcessRaycast()
+    {
         RaycastHit hit;
         if (Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range))
         {
@@ -36,4 +41,5 @@ public class Weapon : MonoBehaviour
         }
         
     }
+
 }
