@@ -6,7 +6,10 @@ using UnityEngine.AI;
 public class EnermyAI : MonoBehaviour
 {
     [SerializeField] Transform target;
+    [SerializeField] float chaseRange = 5f;     // 추적 범위 설정 
+
     NavMeshAgent navMeshAgent;       //  네비메쉬 에이전트 호출
+    float distanceToTarget = Mathf.Infinity;    
 
     void Start()
     {
@@ -16,6 +19,11 @@ public class EnermyAI : MonoBehaviour
     
     void Update()
     {
-        navMeshAgent.SetDestination(target.position);
+        distanceToTarget = Vector3.Distance(target.position, transform.position);
+        // 타겟과의 거리 - 추적 범위 값 비교 
+        if (distanceToTarget <= chaseRange)
+        {
+            navMeshAgent.SetDestination(target.position);
+        }
     }
 }
