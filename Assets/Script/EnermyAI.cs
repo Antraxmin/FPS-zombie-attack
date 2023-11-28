@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class EnermyAI : MonoBehaviour
 {
     [SerializeField] Transform target;
-    [SerializeField] float chaseRange = 5f;     // 추적 범위 설정 
+    [SerializeField] float chaseRange = 5f;     // 추적 범위 설정
+    [SerializeField] float turnSpeed = 5f;
 
     NavMeshAgent navMeshAgent;       //  네비메쉬 에이전트 호출
     float distanceToTarget = Mathf.Infinity;
@@ -34,6 +35,7 @@ public class EnermyAI : MonoBehaviour
 
     private void EngageTarget()
     {
+        FaceTarget();
         if (distanceToTarget >= navMeshAgent.stoppingDistance)
         {
             ChaseTarget();
@@ -47,12 +49,21 @@ public class EnermyAI : MonoBehaviour
 
     private void ChaseTarget()
     {
+        GetComponent<Animator>().SetBool("attack", false);
+        GetComponent<Animator>().SetTrigger("move");
         navMeshAgent.SetDestination(target.position);
     }
 
     private void AttackTarget()
     {
-        Debug.Log(name + "has seeked and is destroying" + target.name);
+        GetComponent<Animator>().SetBool("attack", true);
+    }
+
+    private void FaceTarget()
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed); 
     }
 
     void OnDrawGizmosSelected()
