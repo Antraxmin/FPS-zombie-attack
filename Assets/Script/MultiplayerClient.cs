@@ -1,6 +1,5 @@
 using UnityEngine;
 using WebSocketSharp;
-using WebSocketSharp.Net.WebSockets;
 
 public class MultiplayerClient : MonoBehaviour
 {
@@ -27,7 +26,7 @@ public class MultiplayerClient : MonoBehaviour
         Debug.Log("Connected to server");
     }
 
-    void OnMessage(object sender, MessageEventArgs e)
+    void OnMessage(object sender, WebSocketSharp.MessageEventArgs e)
     {
         // 서버로부터의 메시지 처리
         var data = JsonUtility.FromJson<MessageData>(e.Data);
@@ -44,7 +43,7 @@ public class MultiplayerClient : MonoBehaviour
         {
             Debug.Log("Player disconnected: " + data.playerId);
         }
-   
+
     }
 
     void OnClose(object sender, CloseEventArgs e)
@@ -57,6 +56,5 @@ public class MultiplayerClient : MonoBehaviour
     {
         public string type;
         public string playerId;
-
     }
 }
