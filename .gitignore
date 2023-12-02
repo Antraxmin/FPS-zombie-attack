@@ -498,6 +498,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ll]owPolyFPSLite/
 /[Aa]ssets/[Pp]lugins/
 /[Aa]ssets/[Ss]urvivalStylizedCharacters/
+/[Aa]ssets/[Pp]hoton/
+/[Aa]ssets/[Pp]hoton Unity Networking
 
 ### VisualStudio ###
 
