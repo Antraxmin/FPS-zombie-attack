@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
         UpdateHealthBar();
     }
 
-    void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         float healthPercentage = (float)currentHealth / maxHealth;
         healthBar.fillAmount = healthPercentage;
@@ -42,4 +42,24 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // 최대값 maxHealth로 제한
         UpdateHealthBar();
     }
+
+    public void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+
+            TakeDamage(10);    // 플레이어 체력 테스트 코드         
+        }
+        UpdateHealthTextRealtime();
+        UpdateHealthBar();
+    }
+
+    public void UpdateHealthTextRealtime()
+    {
+        // 현재 체력 값을 실시간으로 업데이트
+        healthText.text = $"Health: {currentHealth}/{maxHealth}";
+    }
+
+
+
 }

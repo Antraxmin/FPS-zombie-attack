@@ -9,19 +9,27 @@ public class Weapon : MonoBehaviour
     [SerializeField] float range = 100f;
     [SerializeField] float damage = 30f;
     [SerializeField] ParticleSystem muzzleFlash;
+    public PlayerHealth playerhealth;
 
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            
             Shoot();        // 버튼을 누를 때마다 사격
+            playerhealth.TakeDamage(10);    // 플레이어 체력 테스트 코드
+            playerhealth.UpdateHealthTextRealtime();
+            playerhealth.UpdateHealthBar();
+
         }
     }
 
     private void Shoot()
     {
+        
         PlayMuzzleFlash();
         ProcessRaycast();
+        
     }
 
     // 사용자 지정 파티클 시스템 적용 
