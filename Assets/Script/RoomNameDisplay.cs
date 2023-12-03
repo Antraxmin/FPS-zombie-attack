@@ -16,7 +16,7 @@ public class RoomNameDisplay : MonoBehaviour
         if (roomNameText != null)
         {
             string roomName = PhotonNetwork.CurrentRoom.Name;
-            roomNameText.text = "Room: " + roomName;
+            roomNameText.text = roomName;
         }
     }
 }
