@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnermyAttack : MonoBehaviour
 {
     PlayerHealth target;
-    [SerializeField] float damage = 40f;
+    [SerializeField] int damage = 10;
     
     void Start()
     {

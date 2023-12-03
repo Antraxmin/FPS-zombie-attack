@@ -1,17 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] float hitPoints = 100f;
+    public Image healthBar;
+    public Text healthText;
 
-    public void TakeDamage(float damage)
+    private int maxHealth = 100; // 최대 체력
+    private int currentHealth = 100; // 현재 체력
+
+    void Start()
     {
-        hitPoints -= damage;
-        if (hitPoints <= 0)
+        UpdateHealthBar();
+    }
+
+    void UpdateHealthBar()
+    {
+        float healthPercentage = (float)currentHealth / maxHealth;
+        healthBar.fillAmount = healthPercentage;
+
+        healthText.text = $"Health: {currentHealth}/{maxHealth}";
+    }
+
+    // 플레이어의 체력 감소 
+    public void TakeDamage(int damageAmount)
+    {
+        currentHealth -= damageAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // 최소값 0, 최대값 maxHealth로 제한
+        UpdateHealthBar();
+
+        if (currentHealth <= 0)
         {
-            print("사망 ");
+            Debug.Log("사망");
         }
+    }
+
+    // 플레이어 체력 회복
+    public void Heal(int healAmount)
+    {
+        currentHealth += healAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // 최대값 maxHealth로 제한
+        UpdateHealthBar();
     }
 }
