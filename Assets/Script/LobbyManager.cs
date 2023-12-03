@@ -13,8 +13,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
     }
 
+    public void SetNickname()
+    {
+        PhotonNetwork.NickName = usernameInput.text;
+    }
+
     public void CreateRoom()
     {
+        SetNickname();
         string roomName = roomnameInput.text;
         PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = 4 });
     }
@@ -22,12 +28,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected to Photon Master Server");
-        PhotonNetwork.NickName = usernameInput.text;
+        //PhotonNetwork.NickName = usernameInput.text;
     }
 
     public override void OnJoinedRoom()
     {
         Debug.Log("Joined Room: " + PhotonNetwork.CurrentRoom.Name);
+        Debug.Log("Joined User: " + PhotonNetwork.NickName);
         PhotonNetwork.LoadLevel("GamePlayScene"); // GamePlayScene 씬으로 이동
     }
 }

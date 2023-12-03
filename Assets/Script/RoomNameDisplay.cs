@@ -5,10 +5,12 @@ using Photon.Pun;
 public class RoomNameDisplay : MonoBehaviour
 {
     public Text roomNameText;
+    public Text usernameText;
 
     private void Start()
     {
         UpdateRoomName();
+        UpdateUsername();
     }
 
     private void UpdateRoomName()
@@ -19,4 +21,14 @@ public class RoomNameDisplay : MonoBehaviour
             roomNameText.text = roomName;
         }
     }
+
+    private void UpdateUsername()
+    {
+        if (usernameText != null)
+        {
+            string username = PhotonNetwork.NickName;
+            usernameText.text = username;
+        }
+    }
 }
+
