@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         
         PlayMuzzleFlash();
@@ -33,12 +33,12 @@ public class Weapon : MonoBehaviour
     }
 
     // 사용자 지정 파티클 시스템 적용 
-    private void PlayMuzzleFlash()
+    public void PlayMuzzleFlash()
     {
         muzzleFlash.Play();
     }
 
-    private void ProcessRaycast()
+    public void ProcessRaycast()
     {
         RaycastHit hit;
         if (Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range))
