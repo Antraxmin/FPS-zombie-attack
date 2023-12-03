@@ -25,6 +25,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = 4 });
     }
 
+    public void JoinRoom()
+    {
+        string roomName = roomnameInput.text;
+        PhotonNetwork.JoinRoom(roomName);
+    }
+
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected to Photon Master Server");
