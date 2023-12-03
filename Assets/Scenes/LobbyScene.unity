@@ -550,7 +550,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'RoomName
+  m_text: 'Channel Name
 
 '
   m_isRightToLeft: 0
@@ -1082,7 +1082,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NickName
+  m_text: User Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 45a52550cb65942cfbf971030836801a, type: 2}
   m_sharedMaterial: {fileID: 6359065409941528299, guid: 45a52550cb65942cfbf971030836801a, type: 2}
