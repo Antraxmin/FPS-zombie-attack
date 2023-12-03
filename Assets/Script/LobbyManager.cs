@@ -27,6 +27,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
+        SetNickname();
         string roomName = roomnameInput.text;
         PhotonNetwork.JoinRoom(roomName);
     }
