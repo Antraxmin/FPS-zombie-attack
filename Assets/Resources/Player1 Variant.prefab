@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8476920808072181810, guid: 52f4fa7ada33845969e90acd29f93dc0, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 1462495693
+      value: 3679457958
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6145023568829919737, guid: 52f4fa7ada33845969e90acd29f93dc0, type: 3}
@@ -115,7 +115,7 @@ PrefabInstance:
       addedObject: {fileID: 7074143039654030735}
     - targetCorrespondingSourceObject: {fileID: 304229857690653571, guid: 52f4fa7ada33845969e90acd29f93dc0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5250363728528322918}
+      addedObject: {fileID: -7133539430247640161}
     - targetCorrespondingSourceObject: {fileID: 3444327708650757754, guid: 52f4fa7ada33845969e90acd29f93dc0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1496147254697733678}
@@ -193,7 +193,7 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters: []
   m_SynchronizeLayers: []
---- !u!114 &5250363728528322918
+--- !u!114 &-7133539430247640161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,8 +208,8 @@ MonoBehaviour:
   speed: 5
   rotSpeed: 120
   _material:
-  - {fileID: 2100000, guid: 86080a783905b5740ad2b81f63a2c650, type: 2}
-  - {fileID: 2100000, guid: c14837dfa515883428e5652d93e80c72, type: 2}
+  - {fileID: -3661639628750336703, guid: 7e0223e1d3e1733499accfa5ebffb67e, type: 3}
+  - {fileID: 5629084884208175553, guid: fce3bf5a5b603db45ab0048fb6ab44df, type: 3}
 --- !u!114 &8265243367958366376 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1276862410022200623, guid: 52f4fa7ada33845969e90acd29f93dc0, type: 3}

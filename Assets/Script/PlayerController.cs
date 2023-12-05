@@ -8,22 +8,29 @@ public class PlayerController : MonoBehaviourPun
     public Transform gunTransform;
     private Weapon weapon;
 
+    PhotonView PV;
+
+    private void Awake()
+    {
+        PV = GetComponent<PhotonView>();
+    }
+
     void Start()
     {
-        if (photonView.IsMine)
+        if (!PV.IsMine)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            
+            Destroy(GetComponentInChildren<Camera>().gameObject);
         }
-        weapon = GetComponentInChildren<Weapon>();
     }
 
     void Update()
     {
-        if (photonView.IsMine && PhotonNetwork.IsConnected)
+        if (!PV.IsMine)
         {
-            HandleMovement();    
+            return;
         }
+        
+        HandleMovement();
         HandleShooting();
         HandleMouseLook();
     }
@@ -37,7 +44,7 @@ public class PlayerController : MonoBehaviourPun
         transform.Translate(movement);
 
         // 다른 플레이어에게 움직임을 전달하는 RPC 호출
-        photonView.RPC("SyncMovement", RpcTarget.Others, transform.position);
+        //photonView.RPC("SyncMovement", RpcTarget.Others, transform.position);
     }
 
     void HandleShooting()
