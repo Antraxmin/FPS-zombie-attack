@@ -12,9 +12,14 @@ public class PlayerController : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
-            HandleMovement();
-            HandleShooting();
-            HandleMouseLook();
+            float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+            float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+
+            // 수직 회전은 플레이어 캐릭터의 X 축을 중심으로 한다.
+            transform.Rotate(Vector3.up * mouseX);
+
+            // 수평 회전은 총 기준 Y 축을 중심으로 한다.
+            gunTransform.Rotate(Vector3.left * mouseY);
         }
     }
 

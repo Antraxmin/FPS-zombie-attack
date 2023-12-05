@@ -57,6 +57,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         connectionInfoText.text = "Room connection successful";
         // 모든 룸 참가자가 GamePlayScene 로드
         PhotonNetwork.LoadLevel("GamePlayScene");
+
+        // 플레이어 캐릭터를 생성할 랜덤 위치를 지정
+        Vector3 randomSpawnPos = Random.insideUnitSphere * 5f;
+        randomSpawnPos.y = 0f;
+
+        PhotonNetwork.Instantiate("Player1", randomSpawnPos, Quaternion.identity);
     }
 }
 
