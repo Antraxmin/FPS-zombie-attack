@@ -6,21 +6,26 @@ public class PlayerController : MonoBehaviourPun
     public float moveSpeed = 5f;
     public float sensitivity = 2f; // 마우스 감도
     public Transform gunTransform;
-    Weapon weapon;
+    private Weapon weapon;
 
-    void Update()
+    void Start()
     {
         if (photonView.IsMine)
         {
-            float mouseX = Input.GetAxis("Mouse X") * sensitivity;
-            float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
-
-            // 수직 회전은 플레이어 캐릭터의 X 축을 중심으로 한다.
-            transform.Rotate(Vector3.up * mouseX);
-
-            // 수평 회전은 총 기준 Y 축을 중심으로 한다.
-            gunTransform.Rotate(Vector3.left * mouseY);
+            Cursor.lockState = CursorLockMode.Locked;
+            
         }
+        weapon = GetComponentInChildren<Weapon>();
+    }
+
+    void Update()
+    {
+        if (photonView.IsMine && PhotonNetwork.IsConnected)
+        {
+            HandleMovement();    
+        }
+        HandleShooting();
+        HandleMouseLook();
     }
 
     void HandleMovement()
@@ -30,6 +35,9 @@ public class PlayerController : MonoBehaviourPun
 
         Vector3 movement = new Vector3(horizontal, 0f, vertical) * moveSpeed * Time.deltaTime;
         transform.Translate(movement);
+
+        // 다른 플레이어에게 움직임을 전달하는 RPC 호출
+        photonView.RPC("SyncMovement", RpcTarget.Others, transform.position);
     }
 
     void HandleShooting()
@@ -55,9 +63,17 @@ public class PlayerController : MonoBehaviourPun
     [PunRPC]
     void ShootRPC()
     {
-        weapon.PlayMuzzleFlash();
-        weapon.ProcessRaycast();
+        if (weapon != null)
+        {
+            weapon.PlayMuzzleFlash();
+            weapon.ProcessRaycast();
+        }
     }
 
-    // 나머지 코드는 동일
+    [PunRPC]
+    void SyncMovement(Vector3 newPosition)
+    {
+        // 다른 플레이어의 화면에서 로컬 플레이어를 움직임
+        transform.position = newPosition;
+    }
 }

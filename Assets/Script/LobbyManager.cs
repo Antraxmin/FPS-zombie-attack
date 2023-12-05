@@ -62,7 +62,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         Vector3 randomSpawnPos = Random.insideUnitSphere * 5f;
         randomSpawnPos.y = 0f;
 
-        PhotonNetwork.Instantiate("Player1", randomSpawnPos, Quaternion.identity);
+        PhotonNetwork.Instantiate("Player1 Variant", randomSpawnPos, Quaternion.identity);
     }
 }
 
